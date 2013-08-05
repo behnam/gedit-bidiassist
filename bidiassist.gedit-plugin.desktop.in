@@ -1,0 +1,6 @@
+[Gedit Plugin]
+Location=bidiassist
+_Name=Bidirectional Assistant
+_Description=Adds some features for bidirectional languages, like Arabic and Hebrew.
+Author=Behnam Esfahbod <behnam@esfahbod.info>
+Copyright="Copyright © 2005 Behnam Esfahbod\nCopyright © 2005 Sharif FarsiWeb, Inc."
