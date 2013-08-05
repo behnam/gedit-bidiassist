@@ -581,7 +581,8 @@ init (GeditPlugin *pd)
 
 #if !GTK_CHECK_VERSION(2,6,0)
 /**
- * It's inn GTK since 2.6, so we provide for backward compatibility
+ * It's inn GTK since 2.6, so we provide it, of course with some change,
+ * for backward compatibility
  **/
 gboolean
 gtk_text_buffer_backspace (GtkTextBuffer *buffer,
@@ -595,7 +596,6 @@ gtk_text_buffer_backspace (GtkTextBuffer *buffer,
   gboolean retval = FALSE;
   const PangoLogAttr *attrs;
   int offset;
-  gboolean backspace_deletes_character;
 
   g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
@@ -603,18 +603,6 @@ gtk_text_buffer_backspace (GtkTextBuffer *buffer,
   start = *iter;
   end = *iter;
 
-  attrs = _gtk_text_buffer_get_line_log_attrs (buffer, &start, NULL);
-
-  /* For no good reason, attrs is NULL for the empty last line in
-   * a buffer. Special case that here. (#156164)
-   */
-  if (attrs)
-    {
-      offset = gtk_text_iter_get_line_offset (&start);
-      backspace_deletes_character = attrs[offset].backspace_deletes_character;
-    }
-  else
-    backspace_deletes_character = FALSE;
 
   gtk_text_iter_backward_cursor_position (&start);
 
@@ -629,22 +617,17 @@ gtk_text_buffer_backspace (GtkTextBuffer *buffer,
   if (gtk_text_buffer_delete_interactive (buffer, &start, &end,
 					  default_editable))
     {
-      if (backspace_deletes_character)
-	{
-	  gchar *normalized_text = g_utf8_normalize (cluster_text,
-						     strlen (cluster_text),
-						     G_NORMALIZE_NFD);
-	  glong len = g_utf8_strlen (normalized_text, -1);
-	  
-	  if (len > 1)
-	    gtk_text_buffer_insert_interactive (buffer,
-						&start,
-						normalized_text,
-						g_utf8_offset_to_pointer (normalized_text, len - 1) - normalized_text,
-						default_editable);
-	  
-	  g_free (normalized_text);
-	}
+      gchar *normalized_text = g_utf8_normalize (cluster_text,
+				     strlen (cluster_text),
+				     G_NORMALIZE_NFD);
+      glong len = g_utf8_strlen (normalized_text, -1);
+
+      if (len > 1)
+      gtk_text_buffer_insert_interactive (buffer, &start, normalized_text,
+		g_utf8_offset_to_pointer (normalized_text, len - 1) - normalized_text,
+		default_editable);
+
+      g_free (normalized_text);
 
       retval = TRUE;
     }
@@ -659,6 +642,5 @@ gtk_text_buffer_backspace (GtkTextBuffer *buffer,
 
   return retval;
 }
-
 #endif
 
