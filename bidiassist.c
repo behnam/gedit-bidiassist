@@ -36,6 +36,7 @@
 #include <glib/gutils.h>
 #include <glib/gi18n.h>
 #include <libgnomeui/gnome-stock-icons.h>
+#include <gtk/gtkversion.h>
 
 #include <gedit/gedit-menus.h>
 #include <gedit/gedit-plugin.h>
@@ -82,19 +83,19 @@ G_MODULE_EXPORT GeditPluginState init (GeditPlugin *pd);
 	#define PARDIR_SUBMENU_PATH		BIDIASSIST_MENU_PATH PARDIR_SUBMENU_NAME"/"
 
 	#define PARDIR_MENUITEM_LTR_LABEL	N_("_Left to Right")
-	#define PARDIR_MENUITEM_LTR_TIP		N_("Change direction of selected paragraphs to Left to right")
+	#define PARDIR_MENUITEM_LTR_TIP		N_("Sets direction of selected paragraphs to left-to-right")
 	#define PARDIR_MENUITEM_LTR_NAME	"LeftToRightDirection"
 	#define PARDIR_MENUITEM_LTR_ACCEL	"*Alt**Shift*L"
 	#define PARDIR_MENUITEM_LTR_ICON	GNOME_STOCK_MENU_ALIGN_LEFT
 
 	#define PARDIR_MENUITEM_RTL_LABEL	N_("_Right to Left")
-	#define PARDIR_MENUITEM_RTL_TIP		N_("Change direction of selected paragraph to right to left")
+	#define PARDIR_MENUITEM_RTL_TIP		N_("Sets direction of selected paragraphs to right-to-left")
 	#define PARDIR_MENUITEM_RTL_NAME	"RightToLeftDirection"
 	#define PARDIR_MENUITEM_RTL_ACCEL	"*Alt**Shift*R"
 	#define PARDIR_MENUITEM_RTL_ICON	GNOME_STOCK_MENU_ALIGN_RIGHT
 
 	#define PARDIR_MENUITEM_CLR_LABEL	N_("_Clear")
-	#define PARDIR_MENUITEM_CLR_TIP		N_("Remove direction of paragraph")
+	#define PARDIR_MENUITEM_CLR_TIP		N_("Remove direction of selected paragraphs")
 	#define PARDIR_MENUITEM_CLR_NAME	"ClearDirection"	
 	#define PARDIR_MENUITEM_CLR_ACCEL	"*Alt**Shift*C"
 	#define PARDIR_MENUITEM_CLR_ICON	NULL
@@ -108,19 +109,19 @@ G_MODULE_EXPORT GeditPluginState init (GeditPlugin *pd);
 #endif // BIDIASSIST_PARDIR
 
 #ifdef BIDIASSIST_MBDTXT
-	#define MBDTXT_SUBMENU_LABEL		N_("Em_bedded Text")
-	#define MBDTXT_SUBMENU_NAME		"EmbeddedText"	
+	#define MBDTXT_SUBMENU_LABEL		N_("Em_bed Text")
+	#define MBDTXT_SUBMENU_NAME		"EmbedText"	
 	#define MBDTXT_SUBMENU_PATH		BIDIASSIST_MENU_PATH MBDTXT_SUBMENU_NAME"/"
 
 	#define MBDTXT_MENUITEM_LTR_LABEL	N_("_Left to Right")
-	#define MBDTXT_MENUITEM_LTR_TIP		N_("Change selected text's direction to embedded left-to-right")
-	#define MBDTXT_MENUITEM_LTR_NAME	"LeftToRightEmbedded"
+	#define MBDTXT_MENUITEM_LTR_TIP		N_("Embeds selected text as left-to-right")
+	#define MBDTXT_MENUITEM_LTR_NAME	"LeftToRightEmbed"
 	#define MBDTXT_MENUITEM_LTR_ACCEL	"*Ctrl**Alt**Shift*L"
 	#define MBDTXT_MENUITEM_LTR_ICON	GNOME_STOCK_MENU_ALIGN_LEFT
 
 	#define MBDTXT_MENUITEM_RTL_LABEL	N_("_Right to Left")
-	#define MBDTXT_MENUITEM_RTL_TIP		N_("Change selected text's direction to embedded right-to-left")
-	#define MBDTXT_MENUITEM_RTL_NAME	"RightToLeftEmbedded"
+	#define MBDTXT_MENUITEM_RTL_TIP		N_("Embeds selected text as right-to-left")
+	#define MBDTXT_MENUITEM_RTL_NAME	"RightToLeftEmbed"
 	#define MBDTXT_MENUITEM_RTL_ACCEL	"*Ctrl**Alt**Shift*R"
 	#define MBDTXT_MENUITEM_RTL_ICON	GNOME_STOCK_MENU_ALIGN_RIGHT
 
@@ -137,13 +138,13 @@ G_MODULE_EXPORT GeditPluginState init (GeditPlugin *pd);
 	#define OVRTXT_SUBMENU_PATH		BIDIASSIST_MENU_PATH OVRTXT_SUBMENU_NAME"/"
 
 	#define OVRTXT_MENUITEM_LTR_LABEL	N_("_Left to Right")
-	#define OVRTXT_MENUITEM_LTR_TIP		N_("Change selected text's direction to override left-to-right")
+	#define OVRTXT_MENUITEM_LTR_TIP		N_("Override selected text as left-to-right")
 	#define OVRTXT_MENUITEM_LTR_NAME	"LeftToRightOverride"
 	#define OVRTXT_MENUITEM_LTR_ACCEL	"*Ctrl**Alt**Shift*L"
 	#define OVRTXT_MENUITEM_LTR_ICON	GNOME_STOCK_MENU_ALIGN_LEFT
 
 	#define OVRTXT_MENUITEM_RTL_LABEL	N_("_Right to Left")
-	#define OVRTXT_MENUITEM_RTL_TIP		N_("Change selected text's direction to override right-to-left")
+	#define OVRTXT_MENUITEM_RTL_TIP		N_("Override selected text as right-to-left")
 	#define OVRTXT_MENUITEM_RTL_NAME	"RightToLeftOverride"
 	#define OVRTXT_MENUITEM_RTL_ACCEL	"*Ctrl**Alt**Shift*R"
 	#define OVRTXT_MENUITEM_RTL_ICON	GNOME_STOCK_MENU_ALIGN_RIGHT
@@ -156,8 +157,8 @@ G_MODULE_EXPORT GeditPluginState init (GeditPlugin *pd);
 #endif // BIDIASSIST_OVRTXT
 
 #ifdef BIDIASSIST_CLRBDC
-	#define CLRBDC_MENUITEM_LABEL		N_("Clear Bidirectional Characters")
-	#define CLRBDC_MENUITEM_TIP		N_("Removes all bidirectional characters in selected paragraph")
+	#define CLRBDC_MENUITEM_LABEL		N_("Remove Bidirectional Characters")
+	#define CLRBDC_MENUITEM_TIP		N_("Removes all bidirectional characters in selected text")
 	#define CLRBDC_MENUITEM_NAME		"ClearBidiChars"	
 	#define CLRBDC_MENUITEM_ACCEL		"*Alt**Shift*X"
 	#define CLRBDC_MENUITEM_PATH		BIDIASSIST_MENU_PATH OVRTXT_SUBMENU_NAME"/"
@@ -261,7 +262,7 @@ paragraph_direction (BonoboUIComponent *uic, gpointer user_data, const gchar* ve
 
 #if defined(BIDIASSIST_MBDTXT) || defined(BIDIASSIST_OVRTXT)
 static void
-embedded_and_override_text (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
+embed_and_override_text (BonoboUIComponent *uic, gpointer user_data, const gchar* verbname)
 {
 	GeditDocument *doc;
 	GtkTextIter start, end, iter;
@@ -297,7 +298,7 @@ embedded_and_override_text (BonoboUIComponent *uic, gpointer user_data, const gc
 	gchar mark[2][6];
 	int mark_len[2];
 
-	// EmbeddedText
+	// EmbedText
 	if (g_strcasecmp (verbname, MBDTXT_MENUITEM_LTR_NAME) == 0) {
 		mark_len[0] = g_unichar_to_utf8(UNICODE_LRE, mark[0]);
 		mark_len[1] = g_unichar_to_utf8(UNICODE_PDF, mark[1]);
@@ -480,11 +481,11 @@ activate (GeditPlugin *pd)
 		gedit_menus_add_menu_item (BONOBO_WINDOW (top_windows->data),
 				     MBDTXT_SUBMENU_PATH, MBDTXT_MENUITEM_LTR_NAME,
 				     MBDTXT_MENUITEM_LTR_LABEL, MBDTXT_MENUITEM_LTR_TIP, MBDTXT_MENUITEM_LTR_ICON,
-				     embedded_and_override_text);
+				     embed_and_override_text);
 		gedit_menus_add_menu_item (BONOBO_WINDOW (top_windows->data),
 				     MBDTXT_SUBMENU_PATH, MBDTXT_MENUITEM_RTL_NAME,
 				     MBDTXT_MENUITEM_RTL_LABEL, MBDTXT_MENUITEM_RTL_TIP, MBDTXT_MENUITEM_RTL_ICON,
-				     embedded_and_override_text);
+				     embed_and_override_text);
 
 		#ifdef BIDIASSIST_MBDTXT_ACCELS
 		ui_component = gedit_get_ui_component_from_window ( BONOBO_WINDOW (top_windows->data));
@@ -503,11 +504,11 @@ activate (GeditPlugin *pd)
 		gedit_menus_add_menu_item (BONOBO_WINDOW (top_windows->data),
 				     OVRTXT_SUBMENU_PATH, OVRTXT_MENUITEM_LTR_NAME,
 				     OVRTXT_MENUITEM_LTR_LABEL, OVRTXT_MENUITEM_LTR_TIP, OVRTXT_MENUITEM_LTR_ICON,
-				     embedded_and_override_text);
+				     embed_and_override_text);
 		gedit_menus_add_menu_item (BONOBO_WINDOW (top_windows->data),
 				     OVRTXT_SUBMENU_PATH, OVRTXT_MENUITEM_RTL_NAME,
 				     OVRTXT_MENUITEM_RTL_LABEL, OVRTXT_MENUITEM_RTL_TIP, OVRTXT_MENUITEM_RTL_ICON,
-				     embedded_and_override_text);
+				     embed_and_override_text);
 
 		#ifdef BIDIASSIST_OVRTXT_ACCELS
 		ui_component = gedit_get_ui_component_from_window ( BONOBO_WINDOW (top_windows->data));
@@ -575,4 +576,89 @@ init (GeditPlugin *pd)
 
 	return PLUGIN_OK;
 }
+
+
+
+#if !GTK_CHECK_VERSION(2,6,0)
+/**
+ * It's inn GTK since 2.6, so we provide for backward compatibility
+ **/
+gboolean
+gtk_text_buffer_backspace (GtkTextBuffer *buffer,
+			   GtkTextIter   *iter,
+			   gboolean       interactive,
+			   gboolean       default_editable)
+{
+  gchar *cluster_text;
+  GtkTextIter start;
+  GtkTextIter end;
+  gboolean retval = FALSE;
+  const PangoLogAttr *attrs;
+  int offset;
+  gboolean backspace_deletes_character;
+
+  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (iter != NULL, FALSE);
+
+  start = *iter;
+  end = *iter;
+
+  attrs = _gtk_text_buffer_get_line_log_attrs (buffer, &start, NULL);
+
+  /* For no good reason, attrs is NULL for the empty last line in
+   * a buffer. Special case that here. (#156164)
+   */
+  if (attrs)
+    {
+      offset = gtk_text_iter_get_line_offset (&start);
+      backspace_deletes_character = attrs[offset].backspace_deletes_character;
+    }
+  else
+    backspace_deletes_character = FALSE;
+
+  gtk_text_iter_backward_cursor_position (&start);
+
+  if (gtk_text_iter_equal (&start, &end))
+    return FALSE;
+    
+  cluster_text = gtk_text_iter_get_text (&start, &end);
+
+  if (interactive)
+    gtk_text_buffer_begin_user_action (buffer);
+  
+  if (gtk_text_buffer_delete_interactive (buffer, &start, &end,
+					  default_editable))
+    {
+      if (backspace_deletes_character)
+	{
+	  gchar *normalized_text = g_utf8_normalize (cluster_text,
+						     strlen (cluster_text),
+						     G_NORMALIZE_NFD);
+	  glong len = g_utf8_strlen (normalized_text, -1);
+	  
+	  if (len > 1)
+	    gtk_text_buffer_insert_interactive (buffer,
+						&start,
+						normalized_text,
+						g_utf8_offset_to_pointer (normalized_text, len - 1) - normalized_text,
+						default_editable);
+	  
+	  g_free (normalized_text);
+	}
+
+      retval = TRUE;
+    }
+  
+  if (interactive)
+    gtk_text_buffer_end_user_action (buffer);
+  
+  g_free (cluster_text);
+
+  /* Revalidate the users iter */
+  *iter = start;
+
+  return retval;
+}
+
+#endif
 
