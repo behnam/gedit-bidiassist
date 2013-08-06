@@ -41,12 +41,12 @@ See Also
 * Source Code: https://github.com/behnam/gedit-bidiassist
 
 * GNOME
-  * Bug 353805 – GTK+ – Support for keyboard layouts: https://bugzilla.gnome.org/show_bug.cgi?id=353805)
-  * Bug 353812 – GTK+ – API for Changing Paragraph Direction: https://bugzilla.gnome.org/show_bug.cgi?id=353812)
-  * Bug 353814 – GTK+ – Adding Bidi features to Context menu: https://bugzilla.gnome.org/show_bug.cgi?id=353814)
-  * Bug 312006 – Gedit – Adding Bidi features: https://bugzilla.gnome.org/show_bug.cgi?id=312006)
+  * Bug 353805 – GTK+ – Support for keyboard layouts: https://bugzilla.gnome.org/show_bug.cgi?id=353805
+  * Bug 353812 – GTK+ – API for Changing Paragraph Direction: https://bugzilla.gnome.org/show_bug.cgi?id=353812
+  * Bug 353814 – GTK+ – Adding Bidi features to Context menu: https://bugzilla.gnome.org/show_bug.cgi?id=353814
+  * Bug 312006 – Gedit – Adding Bidi features: https://bugzilla.gnome.org/show_bug.cgi?id=312006
 
 * FreeDesktop
-  * Specification: bidi-spec: http://freedesktop.org/wiki/Standards/bidi-spec)
-  * Mailing List: bidi at lists.freedesktop.org: http://freedesktop.org/mailman/listinfo/bidi/)
+  * Specification: bidi-spec: http://freedesktop.org/wiki/Standards/bidi-spec
+  * Mailing List: bidi at lists.freedesktop.org: http://freedesktop.org/mailman/listinfo/bidi/
 
